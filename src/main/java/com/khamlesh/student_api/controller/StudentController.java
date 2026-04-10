@@ -16,6 +16,8 @@ import com.khamlesh.student_api.dto.StudentResponseDTO;
 import com.khamlesh.student_api.entity.Student;
 import com.khamlesh.student_api.service.StudentService;
 
+import jakarta.validation.Valid;
+
 @RestController
 @RequestMapping("/students")
 public class StudentController {
@@ -27,12 +29,12 @@ public class StudentController {
 	}
 
 	@PostMapping
-	public StudentResponseDTO createStudent(@RequestBody StudentRequestDTO s) {
+	public StudentResponseDTO createStudent(@Valid @RequestBody StudentRequestDTO s) {
 		return service.saveStudent(s);
 	}
 
 	@PutMapping("{id}")
-	public StudentResponseDTO updateStudent(@PathVariable Integer id, @RequestBody StudentRequestDTO s) {
+	public StudentResponseDTO updateStudent(@Valid @PathVariable Integer id, @RequestBody StudentRequestDTO s) {
 		return service.updateStudent(id, s);
 	}
 

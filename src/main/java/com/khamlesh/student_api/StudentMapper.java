@@ -18,4 +18,11 @@ public class StudentMapper {
 	public static StudentResponseDTO toDTO(Student s) {
 		return new StudentResponseDTO(s.getId(), s.getName(), s.getBranch(), s.getEmail());
 	}
+
+	public static void updateEntity(Student existing, StudentRequestDTO dto) {
+		existing.setName(dto.getName());
+		existing.setBranch(dto.getBranch());
+		existing.setEmail(dto.getEmail());
+		existing.setPassword(dto.getPassword());
+	}
 }
